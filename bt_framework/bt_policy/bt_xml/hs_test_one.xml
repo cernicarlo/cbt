@@ -1,0 +1,43 @@
+ <root BTCPP_format="4" >
+
+     <BehaviorTree ID="MainTree">
+        <ReactiveSequence name="root">
+            <!-- <BatteryOK/> -->
+            <Sequence>
+                <SaySomething   message="DUMMY TEST 1 - mission started..." />
+                <TestHelpSeekerNode fb_order="3" />
+                <SaySomething   message="mission started..." />
+                <MoveBase       goal="1;2;3"/>
+                <SaySomething   message="mission completed!" />
+            </Sequence>
+            <!-- <ReactiveSequence name="reactive_sequence">
+                <SaySomething   message="DUMMY TEST 0 - mission started..." />
+                <BatteryOK/>
+                <Sequence>
+                    <MoveBase       goal="1;2;3"/>
+                    <SaySomething   message="mission completed!" />
+                </Sequence>
+                <SaySomething   message="DUMMY TEST 0 - 0!" />
+            </ReactiveSequence>
+            <ReactiveSequence name="reactive_sequence">
+                <SaySomething   message="DUMMY TEST 0 - mission started..." />
+                <BatteryOK/>
+                <Sequence>
+                    <MoveBase       goal="1;2;3"/>
+                    <SaySomething   message="mission completed!" />
+                </Sequence>
+                <SaySomething   message="DUMMY TEST 0 - 1!" />
+            </ReactiveSequence>
+            <ReactiveSequence name="reactive_sequence">
+                <SaySomething   message="DUMMY TEST 0 - mission started..." />
+                <BatteryOK/>
+                <Sequence>
+                    <MoveBase       goal="1;2;3"/>
+                    <SaySomething   message="mission completed!" />
+                </Sequence>
+                <SaySomething   message="DUMMY TEST 0 - 2!" />
+            </ReactiveSequence> -->
+        </ReactiveSequence>
+     </BehaviorTree>
+
+ </root>

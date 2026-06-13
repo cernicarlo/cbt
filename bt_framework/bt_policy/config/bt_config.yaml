@@ -1,0 +1,5 @@
+# main_bt: "inspect_structure_base"  # tethering issues
+# main_bt: "inspect_anode_left"  # missing anode ?
+# main_bt: "inspect_anode_right"  # fish in the middle
+# main_bt: "inspect_anodes"  # same logic as inspect_offshore_base, original leaf names
+main_bt: "inspect_offshore_base"  # paper BT1 (paper-accordant leaf names)

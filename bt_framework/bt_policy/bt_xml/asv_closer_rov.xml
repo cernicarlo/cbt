@@ -1,0 +1,32 @@
+ <root BTCPP_format="4" >
+     <BehaviorTree ID="MainTree">
+        <Sequence name="root">
+            <SaySomething   message="BlueBoat getting closer to BlueROV" />
+            <ReactiveFallback name="FollowBlueRovNode">
+                <!-- <IsBatteryOK   name="battery_ok"/> -->  <!--uncomment if you don't mind seeing battery msg spam-->
+                <!-- TODO Fallbac -->
+                <!-- are close? -->
+                <AreAsvAndRovCloseEnough/>
+                <FollowBlueRovNode tol_pos="1.5" />
+            </ReactiveFallback>
+            <FreeTether is_tether_free="true"/>
+            <SaySomething   message="BlueBoat got closer to BlueROV" />
+        </Sequence>
+     </BehaviorTree>
+ </root>
+
+  <!-- <root BTCPP_format="4" >
+     <BehaviorTree ID="MainTree">
+        <Sequence name="root">
+            <SaySomething   message="BlueBoat getting closer to BlueROV" />
+            <ReactiveSequence name="FollowBlueRovNode">
+                <!-- <IsBatteryOK   name="battery_ok"/> -->  <!--uncomment if you don't mind seeing battery msg spam-->
+                <!-- TODO Fallbac -->
+                <!-- are close? -->
+                <FollowBlueRovNode tol_pos="1.5" />
+            </ReactiveSequence>
+            <FreeTether is_tether_free="true"/>
+            <SaySomething   message="BlueBoat got closer to BlueROV" />
+        </Sequence>
+     </BehaviorTree>
+ </root> -->

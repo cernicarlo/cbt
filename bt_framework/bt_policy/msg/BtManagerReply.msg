@@ -1,0 +1,3 @@
+string help_requester_addressed
+bool reply
+string reason

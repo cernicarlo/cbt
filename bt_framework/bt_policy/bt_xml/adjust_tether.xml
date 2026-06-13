@@ -1,0 +1,15 @@
+ <root BTCPP_format="4" >
+     <BehaviorTree ID="MainTree">
+        <Sequence name="root">
+            <SaySomething   message="Adjusting cable" />
+            <ReactiveFallback name="ReleaseTether">
+                <!-- <IsBatteryOK   name="battery_ok"/> -->  <!--uncomment if you don't mind seeing battery msg spam-->
+                <!-- TODO Fallbac -->
+                <!-- are close? -->
+                <IsTetherEnough/>
+                <ReleaseTetherNode success="false" />
+            </ReactiveFallback>
+            <SaySomething   message="BlueBoat got closer to BlueROV" />
+        </Sequence>
+     </BehaviorTree>
+ </root>

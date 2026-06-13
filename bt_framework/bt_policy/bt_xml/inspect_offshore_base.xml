@@ -1,0 +1,49 @@
+<root BTCPP_format="4" >
+
+     <!-- Paper main BT (BT1): inspect_offshore_base.
+          Structurally identical to inspect_anodes; the Leaf names follow the
+          paper (Fig.1): BRGoToTargetA/B, BRInspectTargetA/B. The node classes
+          are the same, registered under these paper-accordant aliases. -->
+     <BehaviorTree ID="MainTree">
+        <Fallback name="root">
+            <Sequence name="execute_mission">
+                <SaySomething   message="Inspect Offshore Base - mission started..." />
+                <Fallback name="target_a">
+                    <IsObjectInspected object="anode_right"/>
+                    <Sequence>
+                        <!-- <IsBatteryOK   name="battery_ok"/> -->
+                        <BRGoToTargetA goal="0.5;1.5;3.5;0.0;0.0;0.0"/> <!-- Target A -->
+                        <SaySomething   message="Robot at Target A - checking" />
+                        <Sleep msec="100"/>
+                        <SaySomething   message="Robot at Target A - inspecting" />
+                        <BRInspectTargetA object="anode_right"/>
+                        <SaySomething   message="Target A inspection completed" />
+                    </Sequence>
+                </Fallback>
+                <SaySomething   message="Inspect Offshore Base - Target A ok..." />
+                <Fallback name="target_b">
+                    <IsObjectInspected object="anode_left"/>
+                    <Sequence>
+                        <!-- <IsBatteryOK   name="battery_ok"/> -->
+                        <BRGoToTargetB goal="2.5;3.0;4.0;0.0;0.0;30.0"/> <!-- Target B -->
+                        <SaySomething   message="Robot at Target B - checking" />
+                        <Sleep msec="100"/>
+                        <SaySomething   message="Robot at Target B - inspecting" />
+                        <BRInspectTargetB object="anode"/>
+                        <SaySomething   message="Target B inspection completed" />
+                    </Sequence>
+                </Fallback>
+                <SaySomething   message="Inspect Offshore Base - Target B ok..." />
+                <SaySomething   message="Inspect Offshore Base - mission completed" />
+            </Sequence>
+            <ReactiveFallback name="go_home">
+                <!-- TODO: isRobotHome -->
+                <Parallel success_count="1" failure_count="2">
+                    <TransitionToPoseNode goal="0.0;0.0;2.0;0.0;0.0;0.0"/>
+                    <FollowBlueRovNode tol_pos="0.5" />
+                </Parallel>
+            </ReactiveFallback>
+        </Fallback>
+     </BehaviorTree>
+
+ </root>

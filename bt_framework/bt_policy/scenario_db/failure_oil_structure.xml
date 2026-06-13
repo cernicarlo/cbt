@@ -1,0 +1,6 @@
+<FailureReason>
+  <PerformSurvey clean_structure="false"/>
+  <CleanTarget handle_current="false"/>
+  <MapSeaFloor handle_turbid_water="false"/>
+  <UtilizeOpticalImaging handle_optical_limitation="false"/>
+</FailureReason>

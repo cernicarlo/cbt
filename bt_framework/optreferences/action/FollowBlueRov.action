@@ -1,0 +1,11 @@
+# Goal
+float64 tol_pos # tolerance x-y radius for 2d model (m)
+float64 tol_yaw # tolerance yaw for 2d model (degrees)
+---
+# Result
+bool success
+---
+# Feedback (optional, can be extended as needed)
+float64 current_x
+float64 current_y
+float64 current_yaw

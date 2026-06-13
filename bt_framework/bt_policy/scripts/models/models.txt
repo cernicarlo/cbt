@@ -1,0 +1,2 @@
+dummy file to save models folder. Here is where you place the NN model.
+For more info, please DM

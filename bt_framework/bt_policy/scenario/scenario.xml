@@ -1,0 +1,17 @@
+<scenario name="iauv_girona1000_survey_scan">
+<!-- <scenario name="iauv_girona1000_survey_circular_true"> -->
+    <!-- inspect structure -->
+    
+    <isPathClear outcome="success"/>
+    <Inspect outcome="success"/>
+    <PathRequest outcome="success"/>
+
+    <default values="default">
+      <!-- inspect structure -->
+      <PathRequest outcome="success"/>
+      <isPathClear outcome="success"/>
+      <Inspect outcome="success"/>
+
+    </default>
+ 
+</scenario>

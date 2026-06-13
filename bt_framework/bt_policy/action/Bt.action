@@ -1,0 +1,10 @@
+# Goal definition
+string name
+string intention
+string goal
+---
+# Result definition
+bool success
+---
+# Feedback definition
+string feedback

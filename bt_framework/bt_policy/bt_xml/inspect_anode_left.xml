@@ -1,0 +1,29 @@
+<root BTCPP_format="4" >
+
+     <BehaviorTree ID="MainTree">
+        <Fallback name="root">
+            <Sequence name="execute_mission">
+                <SaySomething   message="Going to inspect anode - mission started..." />
+                <Sequence>
+                    <!-- <IsBatteryOK   name="battery_ok"/> -->
+                    <TransitionToPoseNode goal="1.5;1.0;3.0;0.0;0.0;0.0"/> <!-- Anode left waypoint-->
+                    <SaySomething   message="Robot on pose - checking for anode" />
+                    <InspectObjectNode object="anode"/>
+                    <SaySomething   message="(Simulate inspection sleeping 1s...)" />
+                    <Sleep msec="1000"/>
+                    <SaySomething   message="Anode inspection completed" />
+                </Sequence>
+                <SaySomething   message="Inspect Node - ok..." />
+                <SaySomething   message="Inspect Node - mission completed" />
+            </Sequence>
+            <ReactiveSequence name="go_home">
+                <!-- TODO: isRobotHome -->
+                <Parallel success_count="1" failure_count="2">
+                    <TransitionToPoseNode goal="0.0;0.0;2.0;0.0;0.0;0.0"/>
+                    <FollowBlueRovNode tol_pos="0.5" />
+                </Parallel>
+            </ReactiveSequence>
+        </Fallback>
+     </BehaviorTree>
+
+ </root> 

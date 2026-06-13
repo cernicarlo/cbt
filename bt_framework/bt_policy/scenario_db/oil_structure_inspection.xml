@@ -1,0 +1,59 @@
+<scenario name="oil_structure_inspection_true">
+    <!-- inspect structure -->
+    <isIspectionDone outcome="failure"/>
+    <Deploy outcome="success"/>
+    <PerformSurvey outcome="failure"/>
+    <IdentifyRepairNeed outcome="success"/>
+    <MarkRepairPoints outcome="success"/>
+    <AreDataUploaded outcome="success"/>
+    <NavigateToUploadPoint outcome="success"/>
+    <UploadData outcome="success"/>
+    <GoToDock outcome="success"/>
+    <Recharge outcome="success"/>
+    <SystemCheck outcome="success"/>
+  
+    <!-- clean_structure -->
+    <IdentifyCleaningTargets outcome="success"/>
+    <ApproachTarget outcome="success"/>
+    <CleanTarget outcome="failure"/>
+
+    <!-- handle current -->
+    <ActivateCurrentCompensation outcome="success"/>
+    <IsAUVStable outcome="success"/>
+    <RecordData outcome="success"/>
+    <SignalForHelp outcome="success"/>
+    <DataBackup outcome="success"/>
+    <AscentToSurface outcome="success"/>
+    <WaitForRescueOrInstruction outcome="success"/>
+
+    <default values="default">
+      <!-- inspect structure -->
+      <isIspectionDone outcome="success"/>
+      <Deploy outcome="success"/>
+      <PerformSurvey outcome="success"/>
+      <IdentifyRepairNeed outcome="success"/>
+      <MarkRepairPoints outcome="success"/>
+      <AreDataUploaded outcome="success"/>
+      <NavigateToUploadPoint outcome="success"/>
+      <UploadData outcome="success"/>
+      <GoToDock outcome="success"/>
+      <Recharge outcome="success"/>
+      <SystemCheck outcome="success"/>
+
+      <!-- clean_structure -->
+      <IdentifyCleaningTargets outcome="success"/>
+      <ApproachTarget outcome="success"/>
+      <CleanTarget outcome="success"/>
+
+      <!-- handle current -->
+      <ActivateCurrentCompensation outcome="success"/>
+      <IsAUVStable outcome="success"/>
+      <RecordData outcome="success"/>
+      <SignalForHelp outcome="success"/>
+      <DataBackup outcome="success"/>
+      <AscentToSurface outcome="success"/>
+      <WaitForRescueOrInstruction outcome="success"/>
+
+    </default>
+ 
+</scenario>

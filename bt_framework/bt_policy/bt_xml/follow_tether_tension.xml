@@ -1,0 +1,15 @@
+ <root BTCPP_format="4" >
+
+     <BehaviorTree ID="MainTree">
+        <Sequence name="root">
+            <SaySomething   message="following tether tension..." />
+            <ReactiveSequence>
+                <!-- <IsBatteryOK   name="battery_ok"/> -->  <!--uncomment if you don't mind seeing battery msg spam-->
+                <TransitionToPoseNode goal="0.0;0.0;2.0;0.0;0.0;0.0" />
+                <FreeTether is_tether_free="true"/>
+            </ReactiveSequence>
+            <SaySomething   message="Follow tension success" />
+        </Sequence>
+     </BehaviorTree>
+
+ </root>

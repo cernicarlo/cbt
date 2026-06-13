@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>optreferences</name>
+  <version>0.1.0</version>
+  <description>ROS2 action server for smooth optreferences transitions</description>
+  <maintainer email="cernicchiarocarlo@gmail.com">Carlo Cernicchiaro</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>angles</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>nav2_util</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

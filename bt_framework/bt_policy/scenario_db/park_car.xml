@@ -1,0 +1,22 @@
+<scenario name="go_to_work">
+    <IsParkingAreaFree result="false"/>
+    <ParkAreaAction upstairs="false"/>
+    <ParkAreaAction somewhere="false"/>
+    <ParkAreaAction somewhere_else="true"/>
+    <IsFreeParkingArea default="false"/>
+    <!-- <IsThisParkingAreaFree result="false"/> -->
+
+    <default values="default">
+      <IsUpParkFree result="true"/> 
+      <IsParkingAreaFree result="true"/>
+      <IsThisParkingAreaFree result="true"/>
+      <ParkAreaAction upstairs="true"/>
+      <IsFreeParkingArea default="true"/>
+    </default>
+  <!-- 
+    <IsUpParkFree result="false"/>  -->
+  <!--   <CheckPark SomewhereElse="false"/> -->  
+  <!-- <ParkArea Upstairs="false"/> -->  
+  <!--   -->  
+</scenario>
+

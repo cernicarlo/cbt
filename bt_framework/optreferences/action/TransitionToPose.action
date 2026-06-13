@@ -1,0 +1,18 @@
+# Goal
+float64 x
+float64 y
+float64 z
+float64 roll  # degrees
+float64 pitch # degrees
+float64 yaw   # degrees
+---
+# Result
+bool success
+---
+# Feedback (optional, can be extended as needed)
+float64 current_x
+float64 current_y
+float64 current_z
+float64 current_roll
+float64 current_pitch
+float64 current_yaw

@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<scenario>
+	<environment>
+		<ned latitude="41.7777" longitude="3.0333"/>	
+		<ocean>
+			<water density="1031.0" jerlov="0.2"/>
+			<waves height="0.0"/>
+			<particles enabled="true"/>
+			
+			<current type="uniform">
+				<velocity xyz="0.42 0.0 0.0"/>
+			</current>
+			<!-- 
+			<current type="jet">
+				<center xyz="0.0 0.0 3.0"/>
+				<outlet radius="0.2"/>
+				<velocity xyz="0.0 2.0 0.0"/>
+			</current>
+			-->
+		</ocean>
+		<atmosphere>
+			<sun azimuth="20.0" elevation="50.0"/>
+		</atmosphere>
+	</environment>
+
+	<materials>
+		<material name="Neutral" density="1000.0" restitution="0.5"/>
+		<material name="Rock" density="3000.0" restitution="0.8"/>
+		<material name="Fiberglass" density="1500.0" restitution="0.3"/>
+		<material name="Aluminium" density="2710.0" restitution="0.7"/>
+		<material name="Polyamid" density="1500.0" restitution="0.1"/>
+		<material name="Foam" density="280.0" restitution="0.1"/>
+		<friction_table>
+			<friction material1="Neutral" material2="Neutral" static="0.5" dynamic="0.2"/>
+			<friction material1="Neutral" material2="Rock" static="0.2" dynamic="0.1"/>
+			<friction material1="Neutral" material2="Fiberglass" static="0.5" dynamic="0.2"/>
+			<friction material1="Neutral" material2="Aluminium" static="0.5" dynamic="0.2"/>
+			<friction material1="Neutral" material2="Polyamid" static="0.2" dynamic="0.05"/>
+			<friction material1="Rock" material2="Rock" static="0.9" dynamic="0.7"/>
+			<friction material1="Rock" material2="Fiberglass" static="0.6" dynamic="0.4"/>
+			<friction material1="Rock" material2="Aluminium" static="0.6" dynamic="0.3"/>
+			<friction material1="Rock" material2="Polyamid" static="0.4" dynamic="0.2"/>
+			<friction material1="Fiberglass" material2="Fiberglass" static="0.5" dynamic="0.2"/>
+			<friction material1="Fiberglass" material2="Aluminium" static="0.5" dynamic="0.2"/>
+			<friction material1="Fiberglass" material2="Polyamid" static="0.1" dynamic="0.05"/>
+			<friction material1="Aluminium" material2="Aluminium" static="0.8" dynamic="0.5"/>
+			<friction material1="Aluminium" material2="Polyamid" static="0.1" dynamic="0.05"/>
+			<friction material1="Polyamid" material2="Polyamid" static="0.1" dynamic="0.05"/>
+		</friction_table>
+	</materials>
+	<!--
+	<looks>
+		<look name="tank" rgb="0.9 0.9 0.9" roughness="0.9"/>
+		<look name="boatlanding" rgb="0.5 0.1 0" roughness="0.9"/>
+		<look name="monopile" gray="1.0" roughness="0.5" metalness="1.0"
+			texture="wind_turbine/BaseColor.png"/>
+	</looks>
+	
+	<static name="Tank" type="model">
+		<physical>
+			<mesh filename="cirs_tank.obj" scale="1.0"/>
+			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+		</physical>
+		<material name="Rock"/>
+		<look name="tank"/>
+		<world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+	</static>
+	-->
+
+	<static name="Monopile" type="model">
+		<physical>
+			<mesh filename="wind_turbine/wind_turbine_OffshoreLearningv1.obj" scale="2.0"/>
+			<origin rpy="3.14 0.0 0.0" xyz="-1.0 0.0 4.0"/>
+		</physical>
+		<material name="Neutral"/>
+		<look name="monopile"/>
+		<world_transform rpy="0.0 0.0 0.0" xyz="2.0 4.0 0.0"/>
+	</static>
+
+	<include file="$(find br2_stonefish)/scenarios/blueboat_bluerov_heavy.scn">
+		<arg name="vehicle_name" value="bluerov"/>
+		<arg name="position" value="0.0 0.0 1.0"/>
+		<arg name="orientation" value="0.0 0.0 0.0"/>
+	</include>
+<!-- 
+	<looks>
+		<look name="seabed" rgb="0.7 0.7 0.5" roughness="0.9" normal_map="textures/sand_normal.png"/>
+	</looks> -->
+
+	<static name="Seabed" type="plane">
+		<material name="Rock"/>
+		<look name="Yellow" uv_scale="5.0"/>
+		<world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 5.0"/>
+	</static>
+
+	<dynamic name="fish_01" type="compound" physics="submerged">
+		<!-- Main body - horizontal cylinder (fish body) -->
+		<external_part name="fish_body" type="cylinder" physics="submerged" buoyant="true">
+			<dimensions radius="0.15" height="0.6"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<mass value="5.0"/>
+			<look name="fish"/>
+			<compound_transform xyz="0.0 0.0 0.0" rpy="0.0 1.57 0.0"/>  <!-- Horizontal -->
+		</external_part>
+		
+		<!-- Tail fin - to make it look more fish-like -->
+		<external_part name="fish_tail" type="box" physics="submerged" buoyant="true">
+			<dimensions xyz="0.25 0.05 0.15"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<mass value="0.5"/>
+			<look name="fish"/>
+			<compound_transform xyz="0.35 0.0 0.0" rpy="0.0 0.0 0.0"/>
+		</external_part>
+		
+		<!-- Internal ballast for neutral buoyancy control -->
+		<internal_part name="ballast" type="sphere" physics="submerged" buoyant="true">
+			<dimensions radius="0.08"/>
+			<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+			<material name="Neutral"/>
+			<mass value="1.0"/>
+			<look name="manipulator"/>
+			<compound_transform xyz="0.0 0.0 -0.05" rpy="0.0 0.0 0.0"/>
+		</internal_part>
+		
+		<!-- Initial world position -->
+		<world_transform xyz="2.0 4.0 -2.0" rpy="0.0 0.0 0.0"/>
+	</dynamic>
+
+
+</scenario>

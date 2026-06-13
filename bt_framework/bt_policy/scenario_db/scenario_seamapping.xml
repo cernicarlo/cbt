@@ -1,0 +1,44 @@
+<scenario name="seafloor_mapping">
+    <!-- seafloor_mapping -->
+    <NavigateToAreaOfInterest outcome="success"/>
+    <MapSeaFloor outcome="failure"/>
+    <IdentifyPointsOfInterest outcome="success"/>
+    <CollectEnvironmentalSamples outcome="success"/>
+
+    <!-- seafloor_mapping -->    
+    <AdjustSonarSettings outcome="failure"/>
+    <UtilizeOpticalImaging outcome="failure"/>
+
+    <!-- seafloor_mapping --> 
+    <IncreaseImagingContrastAndFiltering outcome="failure"/>
+    <ActivateAcousticParticleDispersal outcome="success"/>
+    <MarkAreaAndReturnLater outcome="success"/>
+
+
+    <default values="default">
+      <!-- seafloor_mapping -->
+      <NavigateTo AreaOfInterest="true"/>
+      <Map SeaFloor="false"/>
+      <Identify PointsOfInterest="true"/>
+      <Collect EnvironmentalSamples="true"/>
+
+      <!-- seafloor_mapping -->    
+      <AdjustSonarSettings SonarSettings="false"/>
+      <UtilizeOpticalImaging OpticalImaging="false"/>
+
+      <!-- seafloor_mapping --> 
+      <Increase ImagingContrastAndFiltering="false"/>
+      <Activate AcousticParticleDispersal="true"/>
+      <Mark AreaAndReturnLater="true"/>
+    </default>
+</scenario>
+
+<!-- <FailureReason>
+  <Map SeaFloor="TurbidWater"/>
+  <UtilizeOpticalImaging OpticalImaging="OpticalLimitation"/>
+</FailureReason>
+
+<Solution>
+  <TurbidWater="HandleTurbidWater"/>
+  <OpticalLimitation="HandleOpticalLimitation"/>
+</Solution> -->

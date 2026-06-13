@@ -1,0 +1,49 @@
+type: "auv_fossen"
+mass: 26.75
+model: bluerov2
+action_norm: false
+inertial:
+  ixx: 0.7
+  iyy: 0.7
+  izz: 0.7
+  ixy: 0.0
+  ixz: 0.0
+  iyz: 0.0
+cog: [0, 0, 0]
+# CoB represented wrt ENU convention
+cob: [0, 0, 0.07]
+# cob: [0, 0, 0.0]
+volume: 0.02675
+length: 0.457
+height: 0.254
+width: 0.338
+base_link: base_link
+frame_id: 'world'
+Ma:
+- [8, 0., 0., 0., 0., 0.]
+- [0., 8, 0., 0., 0., 0.]
+- [0., 0., 8, 0., 0., 0.]
+- [0., 0., 0., 1, 0., 0.]
+- [0., 0., 0., 0., 1, 0.]
+- [0., 0., 0., 0., 0., 1]
+# In the model, the damping coefficients are pre-multiplied by -1
+linear_damping: [-20,
+                 -20,
+                 -20,
+                 -5,
+                 -5,
+                 -5]
+quad_damping: [0,
+               0,
+               0,
+               0,
+               0,
+               0]
+density: 1000.0
+rk: 4
+
+rot: "quat"
+steps: 1
+history: 1
+
+dt: 0.05

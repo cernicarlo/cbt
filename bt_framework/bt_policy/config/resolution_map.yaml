@@ -1,0 +1,39 @@
+# Resolution Map: condition-violation -> corrective BT + cost (1=low .. 10=high).
+# On a failure the manager looks up three keys (executing-BT post-condition,
+# failing-leaf post-condition, leaf failure reason), picks the lowest cost, and
+# breaks ties by priority: BT post-condition > leaf post-condition > failure reason.
+
+emergency_bt1:
+  solution: "dummy_test_one"
+  cost: 1
+emergency_bt2:
+  solution: "dummy_test_two"
+  cost: 1
+order_too_high:
+  solution: "hs_test_one"
+  cost: 2
+
+# Diagnosis #1 — Target A occluded by marine life (fish). Recalled from memory.
+fish_detected_at_target_pose:
+  solution: "deocclusion_maneuver_fish"
+  cost: 5
+missing_object_at_target_pose:
+  solution: "look_around"
+  cost: 5
+
+# Diagnosis #2 — ROV cannot advance toward Target B (tether-length constraint).
+BR_no_advance_motors_ok_env_clear:
+  solution: "adjust_tether"
+  cost: 3
+
+# Diagnosis #3 — adjust_tether cannot release more tether. The executing-BT
+# post-condition (adjust_tether) and the failing-leaf post-condition
+# (ReleaseTether) share the minimum cost; the priority hierarchy selects the
+# BT post-condition -> asv_closer_rov. The leaf failure reason
+# (rel_tether_commanded_not_moving) is intentionally left unmapped.
+adjust_tether:
+  solution: "asv_closer_rov"
+  cost: 4
+ReleaseTether:
+  solution: "follow_tether_tension"
+  cost: 4

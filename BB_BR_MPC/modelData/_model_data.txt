@@ -1,0 +1,9 @@
+Mass: 1.5562e-11
+Volume: 1.5562e-14
+Inertia Matrix Components:
+Ixx: 3.70472e-21
+Iyy: 5.42016e-21
+Izz: 5.56717e-21
+Ixy: 3.46003e-23
+Ixz: 3.91028e-23
+Iyz: -2.4241e-23

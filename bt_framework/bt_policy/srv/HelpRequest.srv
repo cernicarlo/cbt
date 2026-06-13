@@ -1,0 +1,4 @@
+string node_failure
+string node_post_condition
+---
+bool is_request_accepted

@@ -1,0 +1,34 @@
+<scenario name="seafloor_mapping">
+    <!-- seafloor_mapping -->
+    <NavigateTo AreaOfInterest="true"/>
+    <Map SeaFloor="false"/>
+    <Identify PointsOfInterest="true"/>
+    <Collect EnvironmentalSamples="true"/>
+
+    <!-- seafloor_mapping -->    
+    <Adjust SonarSettings="false"/>
+    <Utilize OpticalImaging="false"/>
+
+    <!-- seafloor_mapping --> 
+    <Increase ImagingContrastAndFiltering="false"/>
+    <Activate AcousticParticleDispersal="true"/>
+    <Mark AreaAndReturnLater="true"/>
+    
+
+    <default values="default">
+      <!-- seafloor_mapping -->
+      <NavigateTo AreaOfInterest="true"/>
+      <Map SeaFloor="false"/>
+      <Identify PointsOfInterest="true"/>
+      <Collect EnvironmentalSamples="true"/>
+
+      <!-- seafloor_mapping -->    
+      <Adjust SonarSettings="false"/>
+      <Utilize OpticalImaging="false"/>
+
+      <!-- seafloor_mapping --> 
+      <Increase ImagingContrastAndFiltering="false"/>
+      <Activate AcousticParticleDispersal="true"/>
+      <Mark AreaAndReturnLater="true"/>
+    </default>
+</scenario>

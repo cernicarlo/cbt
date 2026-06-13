@@ -1,0 +1,49 @@
+<root BTCPP_format="4" >
+
+     <BehaviorTree ID="MainTree">
+        <Fallback name="root">
+            <Sequence name="execute_mission">
+                <SaySomething   message="Inspect Structure Base - mission started..." />
+                <Fallback name="anode_right">
+                    <IsObjectInspected object="anode_right"/>
+                    <Sequence>
+                        <!-- <IsBatteryOK   name="battery_ok"/> -->
+                        <TransitionToPoseNode goal="0.5;1.5;3.5;0.0;0.0;0.0"/> <!-- Anode right - previously (-1.5;1.0;3.0;0;0;0)-->
+                        <SaySomething   message="Robot on pose 1(right) - checking for anodes right" />
+                        <Sleep msec="100"/>
+                        <SaySomething   message="Robot on pose 1(right) - inspecting" />
+                        <InspectObjectNode object="anode_right"/>
+                        <SaySomething   message="Robot on pose 1(right) - inspection completed" />
+                        <!-- <SetObjectInspected object="anode_right"/> -->
+                        <SaySomething   message="Anodes 1(right) inspection completed" />
+                    </Sequence>
+                </Fallback>
+                <SaySomething   message="Inspect Structure Base - point 1(right) ok..." />
+                <Fallback name="anode_left">
+                    <IsObjectInspected object="anode_left"/>
+                    <Sequence>
+                        <!-- <IsBatteryOK   name="battery_ok"/> -->
+                        <TransitionToPoseNode goal="2.5;3.0;4.0;0.0;0.0;30.0"/> <!--GoToTargetB-->
+                        <SaySomething   message="Robot on pose 2(left) - checking for anodes left" />
+                        <Sleep msec="100"/>
+                        <SaySomething   message="Robot on pose 2(left) - inspecting" />
+                        <InspectObjectNode object="anode"/>
+                        <SaySomething   message="Robot on pose 2(left) - inspection completed" />
+                        <!-- <SetObjectInspected object="anode_left"/> -->
+                        <SaySomething   message="Anodes 2(left) inspection completed" />
+                    </Sequence>
+                </Fallback>
+                <SaySomething   message="Inspect Structure Base - point 2(left) ok..." />
+                <SaySomething   message="Inspect Structure Base - mission completed" />
+            </Sequence>
+            <ReactiveFallback name="go_home">
+                <!-- TODO: isRobotHome -->
+                <Parallel success_count="1" failure_count="2">
+                    <TransitionToPoseNode goal="0.0;0.0;2.0;0.0;0.0;0.0"/>
+                    <FollowBlueRovNode tol_pos="0.5" />
+                </Parallel>
+            </ReactiveFallback>
+        </Fallback>
+     </BehaviorTree>
+
+ </root> 
